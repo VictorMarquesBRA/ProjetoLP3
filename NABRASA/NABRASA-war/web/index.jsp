@@ -25,9 +25,10 @@
                     <center><input autocomplete="no" id="usuario-entrar" name="usuario" type="text" /></center><br>
                     <center><label for="password-entrar" class="label">Senha</label></center>
                     <center><input id="password-entrar" name="password" type="password" /></center><br>
+                    <input type="hidden" name="ctrl" value="Login">
                     <center><input type="submit" /></center>
                 </form>
-                <span class="form-bottom-button">Não tem conta? Criar</span>
+                <a href="signuo.jsp"><div class="form-bottom-button">Não tem conta? Criar</div></a>
             </div>
         </section>
     </body>
