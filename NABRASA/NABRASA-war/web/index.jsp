@@ -10,9 +10,11 @@
     <head>
         <link href="css/indexStyle.css" rel="stylesheet" type="text/css"/>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script src="http://supremyum.com/MessageStrap/MessageStrap_Lastest.js" type="text/javascript"></script>
         <title>NABRASA</title>
     </head>
     <body>
+        <div class="${messagemType}">${messagem}</div>
         <section class="header absolute">
             <div id="logo">LOGO</div>
             <div id="nav"></div>
@@ -28,7 +30,7 @@
                     <input type="hidden" name="ctrl" value="Login">
                     <center><input type="submit" /></center>
                 </form>
-                <a href="signuo.jsp"><div class="form-bottom-button">Não tem conta? Criar</div></a>
+                <a href="signup.jsp"><div class="form-bottom-button">Não tem conta? Criar</div></a>
             </div>
         </section>
     </body>
