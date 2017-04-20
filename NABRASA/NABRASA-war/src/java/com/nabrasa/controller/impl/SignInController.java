@@ -9,6 +9,6 @@ package com.nabrasa.controller.impl;
  *
  * @author Fernando
  */
-public class LoginController {
+public class SignInController {
     
 }

@@ -1,7 +1,8 @@
 package com.nabrasa.web;
 
+import com.nabrasa.controller.Controller;
+import com.nabrasa.controller.ControllerFactory;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -26,6 +27,12 @@ public class FrontController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String cmd = request.getParameter("cmd");
+        Controller controller = ControllerFactory.getInstanceByName(cmd);
+        controller.init(request, response);
+        controller.execute();
+        response.sendRedirect(controller.getReturnPage());
+        
         
     }
 

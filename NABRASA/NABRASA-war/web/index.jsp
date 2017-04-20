@@ -14,20 +14,20 @@
         <title>NABRASA</title>
     </head>
     <body>
-        <div class="${messagemType}">${messagem}</div>
+        <div class="${messageType}">${message}</div>
         <section class="header absolute">
             <div id="logo">LOGO</div>
             <div id="nav"></div>
         </section>
         <section>
             <div class="form" id="entrar">
-                <form>
+                <form action="FrontController" method="POST">
                     <h3 class="section-title hr">Entrar</h3><br>
                     <center><label for="usuario-entrar" class="label">E-mail</label></center>
                     <center><input autocomplete="no" id="usuario-entrar" name="usuario" type="text" /></center><br>
                     <center><label for="password-entrar" class="label">Senha</label></center>
                     <center><input id="password-entrar" name="password" type="password" /></center><br>
-                    <input type="hidden" name="ctrl" value="Login">
+                    <input type="hidden" name="cmd" value="Login">
                     <center><input type="submit" /></center>
                 </form>
                 <a href="signup.jsp"><div class="form-bottom-button">Não tem conta? Criar</div></a>
