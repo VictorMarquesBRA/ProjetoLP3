@@ -20,25 +20,25 @@ public class SignUpController extends AbstractController {
         String username;
         String password = null;
         String repassword = null;
-        if (this.getRequest().getParameter("email") != null) {
+        if (this.getRequest().getParameter("email").equals("")) {
             this.sendErrorMsg("O campo 'Email' não pode ser vazio.");
             this.setErro(true);
         } else {
             email = this.getRequest().getParameter("email");
         }
-        if (this.getRequest().getParameter("username") != null) {
+        if (this.getRequest().getParameter("username").equals("")) {
             this.sendErrorMsg("O campo 'Nome' não pode ser vazio.");
             this.setErro(true);
         } else {
             username = this.getRequest().getParameter("username");
         }
-        if (this.getRequest().getParameter("password") != null) {
+        if (this.getRequest().getParameter("password").equals("")) {
             this.sendErrorMsg("O campo 'Senha' não pode ser vazio.");
             this.setErro(true);
         } else {
             password = this.getRequest().getParameter("password");
         }
-        if (this.getRequest().getParameter("repassword") != null) {
+        if (this.getRequest().getParameter("repassword").equals("")) {
             this.sendErrorMsg("O campo 'Repita senha' não pode ser vazio.");
             this.setErro(true);
         } else {
