@@ -23,9 +23,9 @@ public class SignUpController extends AbstractController {
       
       
       if (!password.equals(repassword)) {
-          this.setReturnPage("signup.jsp");
-          this.getRequest().setAttribute("message", "As senhas informadas não conferem.");
-          this.getRequest().setAttribute("messageType", "error");
+          this.setReturnPage("index.jsp");
+          this.getRequest().getSession().setAttribute("message", "As senhas informadas não conferem.");
+          this.getRequest().getSession().setAttribute("messageType", "MessageError");
           
       }
       
