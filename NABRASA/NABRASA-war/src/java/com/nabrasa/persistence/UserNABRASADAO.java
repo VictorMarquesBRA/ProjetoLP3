@@ -11,15 +11,15 @@ import javax.persistence.Query;
 
 /**
  *
- * @author 
+ * @author
  */
 @LocalBean
 @Stateful
-public class UserNABRASADAO implements GenericDAO<UserNABRASA>{
+public class UserNABRASADAO implements GenericDAO<UserNABRASA> {
 
-    @PersistenceContext(unitName = "LabLP3PU", type = PersistenceContextType.EXTENDED)
+    @PersistenceContext(unitName = "NABRASAPU", type = PersistenceContextType.EXTENDED)
     private EntityManager em;
-    
+
     @Override
     public void create(UserNABRASA e) {
         em.persist(e);
@@ -30,8 +30,13 @@ public class UserNABRASADAO implements GenericDAO<UserNABRASA>{
         Query q = em.createQuery("select u from UserNABRASA u");
         List<UserNABRASA> lista = q.getResultList();
         return lista;
-        
+
 //        return (List<UserLP3>)em.createQuery("select u from UserLP3").getResultList();
+    }
+
+    public UserNABRASA readByEmail(String email) {
+        Query q = em.createQuery("select u from UserNABRASA u where email = '" + email + "'");
+        return (UserNABRASA) q.getSingleResult();
     }
 
     @Override
@@ -48,5 +53,5 @@ public class UserNABRASADAO implements GenericDAO<UserNABRASA>{
     public void remove(UserNABRASA e) {
         em.remove(em.merge(e));
     }
-    
+
 }
