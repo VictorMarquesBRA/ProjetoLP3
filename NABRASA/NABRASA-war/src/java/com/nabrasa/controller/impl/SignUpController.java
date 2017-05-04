@@ -6,6 +6,13 @@
 package com.nabrasa.controller.impl;
 
 import com.nabrasa.controller.AbstractController;
+import com.nabrasa.persistence.UserNABRASADAO;
+import com.nabrasa.persistence.entities.UserNABRASA;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
 
 /**
  *
@@ -13,11 +20,12 @@ import com.nabrasa.controller.AbstractController;
  */
 public class SignUpController extends AbstractController {
 
+
     @Override
     public void execute() {
         this.setReturnPage("index.jsp");
-        String email;
-        String username;
+        String email = null;
+        String username = null;
         String password = null;
         String repassword = null;
         if (this.getRequest().getParameter("email").equals("")) {
@@ -51,7 +59,23 @@ public class SignUpController extends AbstractController {
                 this.setErro(true);
             } else {
                 this.sendSucessMsg("Cadastrado com sucesso.");
+                UserNABRASA user = new UserNABRASA();
+                user.setEmail(email);
+                user.setUsername(username);
+                user.setPassword(password);
+                UserNABRASADAO userNABRASADAO = new UserNABRASADAO();
+                userNABRASADAO.create(user);
             }
+        }
+    }
+
+    private UserNABRASADAO lookupUserNABRASADAOBean() {
+        try {
+            Context c = new InitialContext();
+            return (UserNABRASADAO) c.lookup("java:global/NABRASA/NABRASA-war/UserNABRASADAO!com.nabrasa.persistence.UserNABRASADAO");
+        } catch (NamingException ne) {
+            Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", ne);
+            throw new RuntimeException(ne);
         }
     }
 
