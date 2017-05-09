@@ -7,6 +7,9 @@ package com.nabrasa.web;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.HttpURLConnection;
+import java.net.Proxy;
+import java.net.URL;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -37,10 +40,19 @@ public class NasaAPODServlet extends HttpServlet {
             String apikey;
             apikey = "gdqf7v7USMIIjI50L3mcZCwcNZCUTVIwFEsq2XL5";
             String url;
-            url = "https://api.nasa.gov/planetary/apod?api_key=" + apikey; 
+            url = "https://api.nasa.gov/planetary/apod?api_key=" + apikey;
             
-            response.sendRedirect(url);
             
+            URL obj = new URL(url);
+            HttpURLConnection con = (HttpURLConnection)obj.openConnection();
+            
+            con.setRequestMethod("GET");
+            
+            int responseCode = con.getResponseCode();
+            
+            if (responseCode == 200){
+                
+            }
         }
     }
 
